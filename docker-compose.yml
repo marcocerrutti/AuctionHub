@@ -7,9 +7,39 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql
-volumes:
-  postgres_data:
+      - /var/lib/postgresql
+  mongodb:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=mongopw
+    ports:
+      - 27017:27017
+    volumes:
+      - /data/db
+
+#   services:
+#   postgres:
+#     image: postgres:18
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgrespw
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - postgres_data:/var/lib/postgresql
+#   mongodb:
+#     image: mongo
+#     environment:
+#       - MONGO_INITDB_ROOT_USERNAME=root
+#       - MONGO_INITDB_ROOT_PASSWORD=mongopw
+#     ports:
+#       - 27017:27017
+#     volumes:
+#       - mongodata:/data/db
+# volumes:
+#   postgres_data:
+#   mongodata:
 
 # services:
 #   postgres:
